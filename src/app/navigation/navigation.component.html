@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand">Calendar of Your Life</a>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+                <label class="nav-link active" title="Open a saved calendar file." for="openCalendarConfiguration_id"
+                    style="cursor: pointer;">Open</label>
+                <a class="nav-link" [routerLink]="" title="Save the calendar data."
+                    (click)="saveCalendarConfiguration()">Save</a>
+                <a class="nav-link" [routerLink]="" title="Clear the calendar data."
+                    (click)="deleteCalendarConfiguration()">Clear</a>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-4" [(ngModel)]="calendarConfiguration.dateOfBirth"
+                    [ngModelOptions]="{standalone: true}" type="date">
+                <button class="btn btn-outline-light"
+                    title="Set your birthday and generate your personalized life calendar." type="submit"
+                    style="width: 200px;" (click)="generateCalendarConfiguration()">Set Birthday</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<input type="file" #fileImportInput name="File Upload" class="nav-link" style="display: none;"
+    id="openCalendarConfiguration_id" (change)="openCalendarConfiguration($event)" accept=".json" />

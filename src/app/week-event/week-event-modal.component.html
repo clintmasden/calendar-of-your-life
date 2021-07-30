@@ -1,0 +1,78 @@
+<div class="modal-header">
+    <h5 class="modal-title text-center" [style.color]="weekSummary.stageType.color">
+        {{weekSummary.stageType.name}} ({{weekSummary.date | date}}) </h5>
+    <button type="button" class="btn" [style.color]="weekSummary.stageType.color"
+        [style.border-color]="weekSummary.stageType.color" aria-label="Close"
+        (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <!-- <pre>{{weekSummary | json}}</pre> -->
+
+
+    <form [formGroup]="weekSummaryForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-floating mb-3">
+            <input type="date" class="form-control" id="date" formControlName="date">
+            <label for="date">Date</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <textarea class="form-control" placeholder="Leave a description here." id="description"
+                formControlName="description" style="height: 75px"></textarea>
+            <label for="description">Description</label>
+        </div>
+
+        <h5 [style.color]="weekSummary.stageType.color">Events:</h5>
+        <br>
+
+        <div formArrayName="events">
+
+            <div class="form-group row" *ngFor="let event of weekSummaryFormEvents.controls; let i=index">
+
+                <div [formGroupName]="i">
+
+
+                    <div class="row">
+
+                        <div class="col-11">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="title" placeholder="Leave a title here."
+                                    formControlName="title">
+                                <label for="title">Title</label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-1 py-1">
+                            <button type="button" (click)="removeEvent(i)" class="btn"
+                                [style.color]="weekSummary.stageType.color"
+                                [style.border-color]="weekSummary.stageType.color">x
+                            </button>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" placeholder="Leave a description here." id="description"
+                                    formControlName="description" style="height: 75px"></textarea>
+                                <label for="description">Description</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" (click)="addEvent()" class="btn" [style.color]="weekSummary.stageType.color"
+                    [style.border-color]="weekSummary.stageType.color">Add
+                    Event</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <button type="submit" [disabled]="!weekSummaryForm.valid" class="btn"
+            [style.color]="weekSummary.stageType.color" [style.border-color]="weekSummary.stageType.color">Save</button>
+    </form>
+</div>
