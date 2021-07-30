@@ -2,8 +2,8 @@
 
 An interactive Angular 2+ web application inspired by Kurzgesagt's [Calendar of Your Life Infographic](https://shop-us.kurzgesagt.org/collections/existential-dread/products/lifespan-calendar-poster?variant=39451596423216) poster.
 
-## Demostration
-[Interative Demostration](https://clintmasden.github.io/calendar-of-your-life/)
+## Demonstration
+[Interactive Demonstration](https://clintmasden.github.io/calendar-of-your-life/)
 
 
 ## Usage
